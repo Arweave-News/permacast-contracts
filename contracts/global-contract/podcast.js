@@ -118,21 +118,6 @@ export async function handle(state, action) {
 
   // PODCAST ACTIONS:
 
-  if (input.function === "deletePodcast") {
-    const index = input.index;
-
-    await _getContractOwner(true, caller);
-    _validateInteger(index, true);
-
-    if (!podcasts[index]) {
-      throw new ContractError(ERROR_PODCAST_INDEX_NOT_FOUND);
-    }
-
-    podcasts.splice(index, 1);
-
-    return { state };
-  }
-
   if (input.function === "editPodcastName") {
     const index = input.index;
     const name = input.name;
@@ -253,21 +238,6 @@ export async function handle(state, action) {
 
     podcasts[index]["episodes"][id]["description"] = desc;
     podcasts[index]["episodes"][id]["logs"].push(actionTx);
-
-    return { state };
-  }
-
-  if (input.function === "deleteEpisode") {
-    const index = input.index;
-    const id = input.id;
-
-    await _getContractOwner(true, caller);
-
-    _validateInteger(index, true);
-    _validateInteger(id, true);
-    _validateEpisodeExistence(index, id);
-
-    podcasts[index]["episodes"].splice(id, 1);
 
     return { state };
   }
