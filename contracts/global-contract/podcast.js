@@ -248,7 +248,7 @@ export async function handle(state, action) {
       return 0;
     }
 
-    return podcasts.length - 1;
+    return podcasts.length;
   }
 
   function _validateStringTypeLen(str, minLen, maxLen) {
