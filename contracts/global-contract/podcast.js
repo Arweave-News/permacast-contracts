@@ -149,7 +149,7 @@ export async function handle(state, action) {
     const actionTx = SmartWeave.transaction.id;
 
     await _getContractOwner(true, caller);
-    _validateInteger(true, index);
+    _validateInteger(index, true);
     _validateStringTypeLen(desc, 10, 750);
 
     if (!podcasts[index]) {
@@ -174,7 +174,7 @@ export async function handle(state, action) {
 
     await _getContractOwner(true, caller);
     _validateStringTypeLen(cover, 43, 43);
-    _validateInteger(true, index);
+    _validateInteger(index, true);
 
     if (!podcasts[index]) {
       throw new ContractError(ERROR_PODCAST_INDEX_NOT_FOUND);
