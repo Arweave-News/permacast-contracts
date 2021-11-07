@@ -184,7 +184,7 @@ export async function handle(state, action) {
       throw new ContractError(ERROR_OLD_VALUE_EQUAL_TO_NEW);
     }
 
-    await _validateDataTransaction(cover);
+    await _validateDataTransaction(cover, "image/");
 
     podcasts[index]["cover"] = cover;
     podcasts[index]["logs"].push(actionTx);
